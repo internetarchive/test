@@ -15,7 +15,7 @@ inputs:
 runs:
   # https://gitlab.com/internetarchive/nomad
   # image: 'docker://${{ inputs.TEST_IMAGE }}' # xxxd
-  image: 'ghcr.io/internetarchive/dyno:main'
+  image: 'docker://ghcr.io/internetarchive/dyno:main'
   using: 'docker'
   args:
     - 'sh'
