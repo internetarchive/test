@@ -14,10 +14,9 @@ inputs:
 
 runs:
   # https://gitlab.com/internetarchive/nomad
-  image: ${{ inputs.TEST_IMAGE }}
+  image: '${{ inputs.TEST_IMAGE }}'
   using: 'docker'
   args:
-    - sh
-    - -ec 
+    - 'sh'
+    - '-ec'
     - 'if [ -e ${{ inputs.TEST_SCRIPT }} ]; then ${{ inputs.TEST_SCRIPT }}; fi'
- 
