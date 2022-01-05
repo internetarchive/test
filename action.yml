@@ -1,0 +1,23 @@
+name: GitHub Actions test for CI/CD pipelines
+author: internetarchive
+
+inputs:
+  TEST_SCRIPT:
+    description: 'default looks for test.sh at top of your repo and runs it.  pass in alt pathname'
+    default: 'test.sh'
+    required: false
+
+  TEST_IMAGE:
+    description: 'defaults to use your just built docker image.  pass in alt docker image to use'
+    default: 'ghcr.io/${{ github.repository }}:${{ github.ref_name }}'
+    required: false
+
+runs:
+  # https://gitlab.com/internetarchive/nomad
+  image: ${{ inputs.TEST_IMAGE }}
+  using: 'docker'
+  args:
+    - sh
+    - -ec 
+    - 'if [ -e ${{ inputs.TEST_SCRIPT }} ]; then ${{ inputs.TEST_SCRIPT }}; fi'
+ 
