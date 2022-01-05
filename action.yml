@@ -14,7 +14,7 @@ inputs:
 
 runs:
   # https://gitlab.com/internetarchive/nomad
-  image: '${{ inputs.TEST_IMAGE }}'
+  image: 'docker://${{ inputs.TEST_IMAGE }}'
   using: 'docker'
   args:
     - 'sh'
