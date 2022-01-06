@@ -1,5 +1,8 @@
 name: GitHub Actions test for CI/CD pipelines
 author: internetarchive
+branding:
+  icon: 'globe'
+  color: 'white'
 
 inputs:
   TEST_SCRIPT:
@@ -13,9 +16,8 @@ inputs:
     required: false
 
 runs:
-  # xxxd
-  # image: 'docker://ghcr.io/internetarchive/dyno:main'
-  image: ${{ inputs.TEST_IMAGE }}
+  image: 'docker://ghcr.io/internetarchive/dyno:main'
+  # image: ${{ inputs.TEST_IMAGE }} # xxxd -- cant make this anything but a hardcoded string :(
   using: 'docker'
   args:
     - 'sh'
