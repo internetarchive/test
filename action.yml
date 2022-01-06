@@ -6,18 +6,19 @@ branding:
 
 inputs:
   TEST_SCRIPT:
-    description: 'default looks for [WORKDIR]/test.sh in docker image and runs it.  pass in alt pathname'
+    description: 'default looks for test.sh at top of your repo and runs it.  pass in alt pathname'
     default: './test.sh'
     required: false
 
-  TEST_IMAGE:
-    description: 'defaults to use your just built docker image.  pass in alt docker image to use'
-    default: 'docker://ghcr.io/${{ github.repository }}:${{ github.ref_name }}'
-    required: false
+  # cant make the `image:` below anything but a hardcoded string :(
+  # TEST_IMAGE:
+  #  description: 'defaults to use your just built docker image.  pass in alt docker image to use'
+  #  default: 'docker://ghcr.io/${{ github.repository }}:${{ github.ref_name }}'
+  #  required: false
 
 runs:
+  # https://github.com/internetarchive/dyno
   image: 'docker://ghcr.io/internetarchive/dyno:main'
-  # image: ${{ inputs.TEST_IMAGE }} # xxxd -- cant make this anything but a hardcoded string :(
   using: 'docker'
   args:
     - 'sh'
