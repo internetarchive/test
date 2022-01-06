@@ -9,12 +9,13 @@ inputs:
 
   TEST_IMAGE:
     description: 'defaults to use your just built docker image.  pass in alt docker image to use'
-    default: 'ghcr.io/${{ github.repository }}:${{ github.ref_name }}'
+    default: 'docker://ghcr.io/${{ github.repository }}:${{ github.ref_name }}'
     required: false
 
 runs:
-  # image: 'docker://${{ inputs.TEST_IMAGE }}' # xxxd
-  image: 'docker://ghcr.io/internetarchive/dyno:main'
+  # xxxd
+  # image: 'docker://ghcr.io/internetarchive/dyno:main'
+  image: ${{ inputs.TEST_IMAGE }}
   using: 'docker'
   args:
     - 'sh'
